@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        /* Css 주석처리
+        Css, Script >> 선택자(selector) 
+
+        가상 선택자 : 의미만 존재 >> :link, :visitied, :hover , :active
+        */
+        a:link{color: red;}
+        a:visited{color: green;}
+        a:hover{color: gold;}
+        a:active{color: blue;}
+        /*
+        Css 의 적용은 기존에 존재하는 태그(요소) 기준으로 적용
+        ex)p,h3,div,hr 등등
+
+        selector
+        다중 선택자 : h1,h2,h3 {color: red;}
+        단일 선택자 : h4{color:blue}
+
+        */
+        h1,h2,h3 {color: red;}
+        h4{color:blue}
+        /*
+        POINT: 사용자 정의 CSS
+        조건 : . >> class 적용
+               # >> id 적용
+               css, javascript, jquery 공통적용
+        */
+        #sma {color:gold}/* #으로 만든건 id 속성으로 적용 .. page 1개만 적용       */
+        .son {color: blue} /* .만든것은 class속성으로 적용 .. page에 여러개 사용 */
+
+    </style>
+
+</head>
+<body>
+    <a href="http://president.go.kr">방문하기</a>
+    <hr>
+    <p id="sma">id라는 속성을 이용해서 css적용</p>
+    <p class = "son">class라는 속성을 사용 css 적용</p>
+    <p class = "son">class라는 속성을 사용 css 적용</p>
+    <p class = "son">class라는 속성을 사용 css 적용</p>
+</body>
+</html>
