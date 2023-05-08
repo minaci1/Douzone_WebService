@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 폼 만들기 과제</title>
+    <link rel ="icon" href ="./image.png">
+    <style>
+        *{
+            box-sizing: border-box;
+            outline : none;
+        }
+
+        body{
+            background-color: #f5f6f7;
+            line-height: 1.5em;
+            color : #222;
+            margin:0;
+        }
+        
+        .member{
+            width:400px;
+            margin:auto;
+            padding:0 20px;
+            margin-bottom: 20px;
+        }
+
+        .member .logo{
+            display: block;
+            margin:50px auto;
+        }
+
+        .member .field{
+            margin : 5px 0; /* 상하로 띄우기*/
+        }
+
+        .memeber b{
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .member input:not(input[type=radio]),.member select{ /*input 요소의 테두리(border) 색상과 두께를 바꿈*/
+            border:1px solid #dadada;
+            padding:15px;
+            width:100%;
+            margin-bottom: 5px;
+        }
+
+        .member input[type=button], /*버튼과 제출하기 버튼 초록이*/
+        .member input[type=submit]{
+            background-color: #2db400;
+            color:#fff
+        }
+
+        .memeber input:focus, .memver select:focus{
+            border:1px solid #2db400
+        }
+        .field.birth div{ /*생년월일 나란히 */
+            display: flex; 
+            gap:10px;
+        }
+        .field.tel-number div{
+            display: flex;
+        }
+   
+    </style>
+</head>
+    
+<body>
+    <div class="member">
+        <!--1. 로고-->
+        <img class="logo" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA2MjRfMjE2%2FMDAxNjU2MDc1MDc1OTc1.oKITKLiW0qobzdIv0eRSKd6BgW6BxHoHDsPQofoIoJkg.yL1qVBcXIHey97wYuC4Rbf7ID4W4Ji-eEeNvx6VzIZog.PNG.tkdlzns%2F%25B3%25D7%25C0%25CC%25B9%25F6_%25BA%25ED%25B7%25CE%25B1%25D7.png&type=sc960_832" width="300" height="150">
+        <!--2. 필드-->
+        <div class ="field">
+            <b>아이디</b>
+            <span class="placehold-text"><input type="text"></span>
+        </div>
+        <div class ="field">
+            <b>비밀번호</b>
+            <input class ="userpw" type="password">
+        </div>
+        <div class="field">
+            <b>비밀번호 재확인</b>
+            <input class ="userpw-confirm" type="password">
+        </div>
+        <div class="field">
+            <b>이름</b>
+            <input type ="text">
+        </div>
+     <!--3. 필드(생년월일)-->
+     <div class ="field birth">
+        <b>생년월일</b>
+        <div>
+            <input type="number" placeholder="년(4자)">
+            <select name ="month">
+                <option value="">월</option>
+                <option value="">1월</option>
+                <option value="">2월</option>
+                <option value="">3월</option>
+                <option value="">4월</option>
+                <option value="">5월</option>
+                <option value="">6월</option>
+                <option value="">7월</option>
+                <option value="">8월</option>
+                <option value="">9월</option>
+                <option value="">10월</option>
+                <option value="">11월</option>
+                <option value="">12월</option>
+            </select>
+            <input type="number" placeholder="일">
+        </div>
+     </div>
+     <!-- 4.필드(성별)-->
+     <div class ="field gender">
+        <b>성별</b>
+        <div>
+            <label><input type="radio" name="gender">남자</label>
+            <label><input type="radio" name="gender">여자</label>
+            <label><input type="radio" name="gender">선택안함</label>
+        </div>
+     </div>
+     
+    <!-- 5. 이메일_전화번호 -->
+    <div class="field">
+        <b>본인 확인 이메일<small>(선택)</small></b>
+            <input type="email" placeholder="선택입력">
+        </div>
+        
+        <div class="field tel-number">
+            <b>휴대전화</b>
+            <select>
+                <option value="">대한민국 +82</option>
+            </select>
+            <div>
+                <input type="tel" placeholder="전화번호 입력">
+                <input type="button" value="인증번호 받기">
+            </div>
+            <input type="number" placeholder="인증번호를 입력하세요">
+        </div>
+        <!-- 6. 가입하기 버튼 -->
+        <input type="submit" value="가입하기">     
+        </div>
+ 
+</body>
+</html>
