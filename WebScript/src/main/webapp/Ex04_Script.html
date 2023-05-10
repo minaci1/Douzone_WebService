@@ -48,6 +48,63 @@
    let result =i+j;
    console.log(result);
 
+   let intnum =10; //정수
+   let dnum = 12.345; // 실수
+   let flag =true; //불린
+   let str = null; // 값이 없다
+   let str2 = "ABC"; //문자열
+
+   console.log(typeof(intnum));  //number
+   console.log(typeof(dnum));   //number
+   console.log(typeof(flag));  //boolean
+   console.log(typeof(str));   //object
+   console.log(typeof(str2)); //string
+
+//연산자
+//산술(+,-,*,/,%) 논리, 관계
+
+let num1 =10;
+let num2 = 3;
+document.write((num1/num2) + "<br>"); // 실수범위
+document.write((num1%num2) + "<br>"); 
+
+// 관계 == (=== 값과 타입 모두 일치) ...
+let a = 3;
+let b = 5;
+console.log((a == b)); //false
+console.log((a != b)); //true
+console.log((a > b)); //false
+
+//논리 (&&,||)
+console.log((10 > 5) && ( 1 != 3)); //둘다 참이면 true 
+console.log((10 < 5) || ( 1 != 3)); //둘중에 하나만 참이어도 참 true 
+
+//삼항 연산자
+let result2 =(4%2 ==0)? "짝수": "홀수" 
+console.log(result2); //짝수
+
+//대입 연산자 (+=, -=, *= , /=)
+let p= 10;
+let k =5;
+p += k; // p =p+k;
+console.log(p);
+
+let x = 5+5;
+let y = "5"+5; // + 산술 , 결합 
+console.log(x);
+console.log(y); // 결합 (55 라는 문자)
+
+let v = "5";
+let v2 = 5;
+let v3 = 5;
+console.log(v == v2); // 값을 비교하는 연산자 true 
+console.log(v === v2); //POINT 값만 같은 것이 아니라 타입 동일 (true) >> false (타입이 다르다 )
+console.log(v2 === v3); //true 값도 같고 타입 같으면 true
+
+
+
+
+
 </script>
 
 </head>

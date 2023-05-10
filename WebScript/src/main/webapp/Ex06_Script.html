@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>내장 함수, 사용자 정의 함수</h3>
+    <button onclick="callConfirm()">클릭 사건 발생(함수 호출되요)</button>
+    <br />
+    <button onclick="showPopoup()">전통팝업</button> <br />
+    <button onclick="myFunc()">팝업(object)</button> <br />
+    <button onclick="goUrlTime('http://www.daum.net')">3초후 이동</button>
+    <br />
+    <button onclick="changeColor()">익명함수호출</button>
+
+    <script>
+      /*
+    JAVA 
+    public void print(){}
+    public String ptint(){return "";}
+    public int print(int num, int num2){return num1+num2;}
+
+    javascript
+    function 함수명(){}
+    function 함수명(num,num2){
+    function 함수명(){return 100;}
+
+    void(x) , return type(x)
+    }
+    */
+
+      function callConfirm() {
+        //사용자 정의 함수
+        if (window.confirm("삭제할까요..")) {
+          //confirm 내장함수 return true, false
+          alert("네");
+        } else {
+          alert("아니오");
+        }
+      }
+      /*
+    팝업창 ()
+    전통적인 방법 : 새로운 창 띄어서 소스 제공 : window.open(URL,name,specs,replace);
+    현대적인 방법 : 페이지 안에 <div> 팝업 되는 내용을 만들어서 
+
+      window.open(URL,name,specs,replace);
+      specs 부분이 웹 브라우저마다 다르게 해석
+    */
+
+      function showPopoup() {
+        window.open("Ex06_popup.html", "zipcode", "width=200,height=200"); //전통적인 방법
+      }
+
+      function myFunc() {
+        let popupwindow = window.open(
+          "Ex06_popup.html",
+          "zipcode",
+          "width=200,height=200"
+        );
+        //popupwindow 자체가 popup창
+        //새창에 제어가 가능
+        popupwindow.document.write("<p>this is zipcode window</p>");
+      }
+      //JAVA : public void goUrlTime(String url){}
+      function goUrlTime(url) {
+        window.setTimeout("location.href='" + url + "'", 3000); //페이지 이동할 때 자주 쓰임(콜백함수, 시간)
+        //url > http://www.naver.com
+        //location.href='http://www.naver.com'
+        //이동해서 naver 주소로...
+      }
+
+      //JAVA public int myCallFunc(int i,int j, int k){return i+j+k;}
+
+      function myCallFunc(i, j, k) {
+        return i + j + k;
+      }
+      let result = myCallFunc(10 + 20 + 30);
+      console.log("result : " + result);
+
+      //javascript 이름없는 함수(익명함수)
+      //이름이 없어요 (한번만 쓰겠다 : 재사용하지 않겠다)
+      //function 이름{}
+
+      changeColor = function () {
+        // 함수를 쓰는 방법 중 1가지
+        window.document.bgColor = "silver";
+        window.document.fgColor = "red";
+      };
+    </script>
+  </body>
+</html>

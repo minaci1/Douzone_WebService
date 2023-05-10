@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      /*
+    https://www.w3schools.com/jsref/met_win_setinterval.asp
+    setInterval(function, milliseconds); //한때 놀았던 함수 
+
+    2가지 무진장 중요!!!!
+    ex) setInterval(function(){}, 1000); 1초마다 익명함수 호출 (callback 함수: )
+
+    ex) function call(){} 재사용가능 함수
+        setInterval(call(),1000) 
+
+
+    1. 익명함수 (일회성 함수) : 재사용 불가 : function(){}
+    2. callback함수 (프로그램 논리(흐름)에 의해서 자동 호출되는 함수) <- 외우기 
+      >>1초마다 , 재호출 , 익명함수가 
+    */
+      let mytimer = window.setInterval(function () {
+        // mytimer 가 interval
+        let d = new Date(); // Date() 자바스크립트 객체
+        let t = d.toLocaleTimeString();
+        document.getElementById("time").innerHTML = t;
+      }, 2000); //자바스크립트는 웹브라우저에서 해석하니까 데스크마다 시간 다를 수 있음
+
+      function myTimerStop() {
+        window.clearInterval(mytimer);
+      }
+    </script>
+  </head>
+  <body>
+    <p id="time"></p>
+    <button onclick="myTimerStop()">stop time</button>
+  </body>
+</html>
