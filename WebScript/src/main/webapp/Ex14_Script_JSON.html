@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+    Javascript 객체지향언어
+    JSON(자바스크립트 객체 표기법)
+     */
+      let Member = {}; //{} 객체의 주소다.
+      Member.name = "hong"; //{name:"hong"} //자체가 객체고 name 은 속성 , hong 값
+      console.log(Member); //hong 속성을 프로퍼티
+      console.log(Member.name);
+
+      Member.age = 100;
+
+      //함수 추가
+      Member.print = function () {
+        document.write("<br>" + this.name + " / " + this.age + "<br>"); //일반 자원을 사용할때 this 사용
+      };
+
+      Member.print(); //호출
+
+      //JSON 객체 만들기
+      let Grade = {
+        list: { hong: 10, kim: 20, park: 30 }, //객체를 value값으로
+        show: function () {
+          //객체의 키값을 뽑아내서 value 얻었다.
+          for (let key in this.list) {
+            document.write(key + ":" + this.list[key] + "<br>");
+          }
+        },
+      };
+
+      Grade.show();
+    </script>
+  </body>
+</html>

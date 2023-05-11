@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let str = "10+20+30";
+      document.write(str + "<br>");
+
+      //1. eval()
+      //문자열 수식 >> 계산식으로 바꿔줌 >>"10+20+30" >> eval() >> 10+20+30 >> 계산
+      //"10+20A+30" >> Error
+      //문자형 숫자 >> 숫자
+      document.write("eval()" + eval(str) + "<br>");
+
+      //2. isNaN >> Not a Number >> 너 숫자 아니니 >> true >> 숫자(false)
+      document.write(isNaN("12345") + "<br>"); //false 어 나 숫자 아니야
+      document.write(isNaN("12345A") + "<br>"); //true
+      document.write(isNaN("대한민국") + "<br>"); //true
+      document.write(isNaN("12345") + "<br>"); //false
+
+      //https://www.w3schools.com/jsref/jsref_obj_string.asp
+      //문자열 함수 찾아보기
+
+      //https://www.w3schools.com/jsref/jsref_obj_number.asp
+      //숫자형 함수 찾아보기
+
+      let i = "100";
+      let j = "200";
+
+      document.write("결합 : " + (i + j)); //+산술, 결합
+      document.write("<br> 연산" + Number(i) + Number(j));
+
+      //Number()
+      //parseInt()
+      //parseFloat()
+
+      /*
+      사선( 미리 만들어 놓았다.) >> 개발자 (행위) >> 함수 생성 >> 사건 발생 (함수 연결 ... ) >> 핸들러
+      필수 이벤트
+      Here is a list of some common HTML events:
+      Event	Description
+      onchange	An HTML element has been changed
+      onclick	The user clicks an HTML element
+      onmouseover	The user moves the mouse over an HTML element
+      onmouseout	The user moves the mouse away from an HTML element
+      onkeydown	The user pushes a keyboard key
+      onload	The browser has finished loading the page
+
+      https://www.w3schools.com/jsref/dom_obj_event.asp 더 많은 정보 ....
+
+      onload	The browser has finished loading the page //브라우저가 페이지를 다 마치고 난 후에
+      >>index.html  >> body 안에 있는 모든 요소가 웹 브라우저 메모리에 로딩되고 난 후에
+      >> onload에 함수를 연결하면 ... 함수는 언제 호출(모든 요소가 로딩되고 난 후에 호출 보장) ***굉장히 중요
+
+      회원가입시 []-[]
+      onfocus="" >> 언제 발생 >> 포커스가 요소에 들어오면
+      onblur="" >> 언제 발생 >> 포커스가 요소를 떠나면 발생
+
+      */
+      function bodayLoad() {
+        console.log("load ....");
+        //나는 body 안에 있는 모든 요소를 제어를 할 수 있다 보장...
+
+        let data = document.myform.money.value;
+        console.log(isNaN(data)); //false면 숫자 false 나옴
+      }
+
+      function focusFunc() {
+        //onfocus 이벤트가 발생하면 나는 focusFunc() 호출
+        //DOM
+        document.getElementById("myinput").style.background = "gold";
+      }
+      function blurFunc() {
+        document.getElementById("myinput").style.background = "white";
+      }
+
+      function selectTag() {
+        const value = document.myform.sel.value;
+        alert(value);
+      }
+
+      function changeColor(obj) {
+        //JAVA : this (객체 자신)
+        //JavaScript : this (요소자신) POINT
+        console.log(obj);
+        obj.style.backgroundColor = "gold";
+      }
+
+      function changeColor2(obj) {
+        console.log(obj);
+        obj.style.backgroundColor = "write";
+      }
+    </script>
+  </head>
+  <body onload="bodayLoad()"></body>
+  <form action="#" name="myform">
+    <input
+      type="text"
+      id="myinput"
+      onfocus="focusFunc()"
+      onblur="blurFunc() "
+    />
+    <br />
+    <select name="sel" onchange="selectTag()">
+      <!-- 바뀌면 실행됨 -->
+      <option value="A">AA</option>
+      <option value="B">BB</option>
+      <option value="C">CC</option>
+      <option value="D">DD</option>
+    </select>
+    <br />
+    <input
+      type="text"
+      onmouseover="changeColor(this)"
+      onmouseout="changeColor2(this)"
+    /><br />
+    <!-- this는 요소자식> input 태그를 가르킨다. this를 사용해서 자기 자신을 메모리에 올림 -->
+    <input type="text" /><br />
+    <input type="text" value="1000" name="money" /><br />
+  </form>
+</html>

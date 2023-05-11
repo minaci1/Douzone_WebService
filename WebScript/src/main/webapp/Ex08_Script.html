@@ -1,73 +1,76 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
-	<script type="text/javascript">
-		/* 
-		유효성 검증
-		Web 환경
-		Client    ----  Server
-		회원가입 검증(Server) >> 서버전송 >> 서버검증 >> 유무 Client 전송
-		회원가입 검증(Client) >> Client 검증 >> 서버로 전송 (0)
-		
-		회원가입 : 서버가 받아서 검증 ( 사용자 ID ) >> 유무 >> DB작업 >> Back(java  :jdbc)
-		*client 처리가 가능한 검증 모두 처리 >> 나머지 (DB작업 필요)
-		
-		처리 : javascript >> 사용자 정보 접근 >> 태그(input ) 값을  read
-		*/
-		function send(){
-			//유효성 검증 (개발자 정의) >> 문제가 없다면 >> 서버로 전송
-			//원하는 값이 아니면 >> 재입력 요구 
-			
-			//1.요소의 정보를 가지고 오기
-			//document.forms[0].elements[0].value  전통적인 방법
-			//권장사항 : DOM script document.getElementById() ... 모든 요소는 id="" 가지고 있어야 한다
-			
-			const userid = document.loginform.txtuserid;
-			//userid >> <input type="text" name="txtuserid" id="txtuserid">
-			console.log(userid);
-			console.log(userid.value);
-			
-			//DOM 요소의 id식별자로 검색
-			const pwd = document.getElementById("txtpwd");
-			console.log(pwd);
-			console.log(pwd.value);
-			
-			//검증 (검증 로직 요구사항 반영)
-			//1. 값의 입력 유무
-			//2. 입력한 값이 로직(비지니스 : 요구사항) 맞는지 확인
-			if(userid.value == "" || !(userid.value.length >= 3 && userid.value.length <= 10)){
-				alert("다시 입력해 주세요");
-				document.loginform.txtuserid.focus();
-				userid.select(); //focus() 커서오고 ,,,select() 블럭 잡아서 입력편하게
-			}else{
-				alert("검증 완료")
-				//서버로 전송
-				// action="Ex08_ok.jsp"
-				
-				document.loginform.action="Ex08_ok.jsp"; //동적 처리 가능
-				document.loginform.submit(); //<input type="submit"
-				
-			}
-			
-		}
-	</script>
-</head>
-<body>
-		<form action="" method="get" name="loginform">
-			ID:<input type="text" name="txtuserid">
-			PWD:<input type="password" name="txtpwd" id="txtpwd">
-			<input type="button" value="전송" onclick="send()">
-			<!-- 
-			<input type="submit"
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+
+  </head>
+  <body>
+    <form action="" method="get" name="loginform">
+      ID:<input type="text" name="txtuserid" /> PWD:<input
+        type="password"
+        name="txtpwd"
+        id="txtpwd"
+      />
+      <input type="button" value="전송" onclick="send()" />
+      <!-- 제출 3가지 가능 
+			<input type="submit" -- 서버로 직접 보내짐 
 			<input type="image" 
 			<input type="button" onclick=""
-			 -->
-		</form>
-</body>
+			 --></form>
+			 
+			 
+
+    <script type="text/javascript">
+      /* 
+			유효성 검증
+			Web 환경
+			Client    ----  Server
+			회원가입 검증(Server) >> 서버전송 >> 서버검증 >> 유무 Client 전송
+			회원가입 검증(Client) >> Client 검증 >> 서버로 전송 (0)
+			
+			회원가입 : 서버가 받아서 검증 ( 사용자 ID ) >> 유무 >> DB작업 >> Back(java  :jdbc)
+			*client 처리가 가능한 검증 모두 처리 >> 나머지 (DB작업 필요)
+			
+			처리 : javascript >> 사용자 정보 접근 >> 태그(input ) 값을  read
+			*/
+      function send() {
+        //유효성 검증 (개발자 정의) >> 문제가 없다면 >> 서버로 전송
+        //원하는 값이 아니면 >> 재입력 요구
+
+        //1.요소의 정보를 가지고 오기
+        //document.forms[0].elements[0].value  전통적인 방법
+        //권장사항 : DOM script document.getElementById() ... 모든 요소는 id="" 가지고 있어야 한다
+
+        const userid = document.loginform.txtuserid; 
+        //userid >> <input type="text" name="txtuserid" id="txtuserid">
+        console.log(userid);
+        console.log(userid.value);
+
+        //DOM 요소의 id식별자로 검색
+        const pwd = document.getElementById("txtpwd");
+        console.log(pwd);
+        console.log(pwd.value);
+
+        //검증 (검증 로직 요구사항 반영)
+        //1. 값의 입력 유무
+        //2. 입력한 값이 로직(비지니스 : 요구사항) 맞는지 확인
+        if (
+          userid.value == "" ||
+          !(userid.value.length >= 3 && userid.value.length <= 10)
+        ) {
+          alert("다시 입력해 주세요");
+          document.loginform.txtuserid.focus();
+          userid.select(); //focus() 커서오고 ,,,select() 블럭 잡아서 입력편하게
+        } else {
+          alert("검증 완료");
+          //서버로 전송
+          // action="Ex08_ok.jsp"
+
+          document.loginform.action = "Ex08_ok.jsp"; //동적 처리 가능
+          document.loginform.submit(); //<input type="submit"
+        }
+      }
+    </script>
+  </body>
 </html>
-
-
-
