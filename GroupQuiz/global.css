@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: green;
+  font-weight: bold;
+}
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.header {
+  width: 100%;
+  height: 64px;
+  background-color: pink;
+}
+
+.navi-bar > li > a {
+  float: left;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.navi-bar {
+  width: 30%;
+  height: 100%;
+  text-align: center;
+}
+.main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}

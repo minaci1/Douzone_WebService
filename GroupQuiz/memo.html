@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메모화면</title>
+    <link rel="stylesheet" type="text/css" href="global.css" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      .bgcolor {
+        width: 100%;
+        height: 100%;
+        overflow: scroll;
+
+        background-image: url(https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
+        background-position: center;
+        background-size: cover;
+      }
+      #getpostit {
+        display: grid;
+        /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+        grid-template-columns: repeat(4, 1fr);
+        margin: 30px;
+      }
+      .content-box {
+        width: 300px;
+        height: 300px;
+        padding: 30px 30px 30px 30px;
+        border: 1px solid #bfbfbf;
+        background-color: thistle;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <ul class="navi-bar">
+          <li><a href="home.html">홈</a></li>
+          <li><a href="map.html">지도</a></li>
+          <li><a href="memo.html">메모</a></li>
+        </ul>
+      </div>
+      <div class="main">
+        <!--포스트잇 만들기  -->
+        <div class="bgcolor">
+          <div id="getpostit"></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"></div>
+    <script>
+      const datas = JSON.parse(localStorage.getItem("places")); //로컬스토리지에 있는 object를 JSON으로 파싱해오고 datas로 전달
+      let item = "";
+      if (datas != null) {
+        //전달값이 있을 경우
+        //document.getElementById("content-box").innerText = datas;
+        for (let i = 0; i < datas.length; i++) {
+          //로컬스토리지 길이만큼 받아오기
+          let name = datas[i].name;
+          let addr = datas[i].addr;
+          let lat = datas[i].lat;
+          let lng = datas[i].lng;
+
+          console.log(name);
+          console.log(addr);
+          console.log(lat);
+          console.log(lng);
+
+          item += `
+          <div class="content-box">
+            <div class="name">
+              <p class="place_name">${name}</p>
+            </div>
+            <div class="addr">
+              <p class="addr_name">${addr}</p>
+            </div>
+            <div class="lat">
+              <p class="lat">${Number(lat).toFixed(2)}</p>
+            </div>
+            <div class="lng">
+              <p class="lng">${Number(lng).toFixed(2)}</p>
+            </div>
+          </div>`;
+        }
+        let contents = document.getElementById("getpostit");
+        contents.innerHTML = item;
+      }
+    </script>
+  </body>
+</html>
