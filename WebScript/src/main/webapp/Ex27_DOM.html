@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트 처리시 주의사항</title>
+  </head>
+  <body>
+    <button id="mybtn">눌러봐</button>
+    <br />
+    <button id="mybtn2" onclick="displayData()">눌러봐2 괄호포함</button>
+    <!-- 괄호 넣어줘야함 -->
+    <br />
+    <p id="demo"></p>
+
+    <script>
+      function displayData() {
+        console.log("call");
+        document.getElementById("demo").innerHTML = new Date();
+      }
+
+      //2.
+      //displayData()
+      document.getElementById("mybtn").onclick = displayData(); //조심해야함
+      //버튼을 클릭하기 전에 displayData(); 호출된다. >>displayData(); 괄호가 있으면 ,, 당근 호출함
+      document.getElementById("mybtn").onclick = displayData; // POINT 이벤트에 함수 줄때는 괄호를 쓰지 않는다.
+
+      //3. onlodad
+      window.onload = function () {
+        document.getElementById("mybtn").onclick = displayData;
+      };
+    </script>
+  </body>
+</html>

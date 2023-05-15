@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script type="text/javascript">
+      window.onload = function () {
+        //익명함수 ... 핸들러 함수
+        //동적인 처리 (body 안에 요소)
+        let btnobj = document.getElementById("btngetdata");
+        //bad 한 코드 >> input type="text"  onclick=""  연습 바로 확인 ...
+        btnobj.onclick = function () {
+          //객체.이벤트명 = 익명함수
+          let txtmsg = document.getElementById("txtmessage");
+          let str = "";
+          str += "ID : " + txtmsg.getAttribute("id");
+          str += " value : " + txtmsg.getAttribute("value");
+          console.log(str);
+        };
+
+        // btncreate 버튼에 click 이벤트를 걸고
+        // input type=text id=txtbox  value=홍길동 인 태그를 동적으로 생성하고
+        // body 요소에 자식요소로 추가하세요 (appendChild)
+        // createElement
+        // setAttribute
+        document.getElementById("btncreate").onclick = function () {
+          let txtname = document.createElement("input");
+          txtname.setAttribute("type", "text");
+          txtname.setAttribute("id", "txtbox");
+          txtname.setAttribute("value", "홍길동");
+
+          document.body.appendChild(txtname);
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <input type="text" id="txtmessage" value="hello" />
+    <input type="button" id="btngetdata" value="getinfo" />
+    <hr />
+    <input type="button" id="btncreate" value="동적생성" />
+  </body>
+</html>

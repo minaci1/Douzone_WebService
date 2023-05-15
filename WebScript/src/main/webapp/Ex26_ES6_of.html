@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>JavaScript For Of Loop</h2>
+    <p>The for of statement loops through the values of any iterable object:</p>
+
+    <p id="demo"></p>
+
+    <script>
+      const cars = ["BMW", "Volvo", "Mini"];
+
+      for (let index in cars) {
+        console.log(cars[index]);
+      } //필수로 쓸줄 알아야함 // 논리적으로 많이쓰임
+
+      let text = ""; //부수적으로 필요하면 of 사용하자
+      for (let value of cars) {
+        text += value + "<br>";
+      }
+
+      document.getElementById("demo").innerHTML = text;
+    </script>
+  </body>
+</html>
