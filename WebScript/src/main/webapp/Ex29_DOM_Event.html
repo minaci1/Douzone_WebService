@@ -7,6 +7,8 @@
     <title>Document</title>
   </head>
   <body>
+    <button id="mybtn">클릭</button>
+
     <script>
       let x = document.getElementById("mybtn");
 
@@ -17,9 +19,11 @@
       function myFunc() {
         document.getElementById("mybtn").innerHTML += "Mouse Over<br>";
       }
+
       function myFunc2() {
         document.getElementById("mybtn").innerHTML += "Mouse Out<br>";
       }
+
       function myFunc3() {
         document.getElementById("mybtn").innerHTML += "Click<br>";
       }
