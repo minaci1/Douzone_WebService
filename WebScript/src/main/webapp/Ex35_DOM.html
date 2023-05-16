@@ -1,0 +1,31 @@
+!DOCTYPE html>
+<html>
+  <meta charset="UTF-8" />
+  <body>
+    <button class="btn">Click me</button>
+    <script>
+      const btn = document.querySelector(".btn");
+
+      //이벤트 핸
+      btn.onclick = function () {
+        alert("1번 Button clicked 1");
+      };
+
+      // �먮쾲吏� 諛붿씤�⑸맂 �대깽�� �몃뱾��
+      btn.onclick = function () {
+        alert("�� Button clicked 2");
+      };
+
+      // addEventListener 硫붿냼�� 諛⑹떇
+      // 泥ル쾲吏� 諛붿씤�⑸맂 �대깽�� �몃뱾��
+      btn.addEventListener("click", function () {
+        alert("�� Button clicked 1");
+      });
+
+      // �먮쾲吏� 諛붿씤�⑸맂 �대깽�� �몃뱾��
+      btn.addEventListener("click", function () {
+        alert("�� Button clicked 2");
+      });
+    </script>
+  </body>
+</html>

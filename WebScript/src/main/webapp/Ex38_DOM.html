@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8" />
+  <body>
+    <p>클릭하세요. 클릭한 곳의 좌표가 표시됩니다.</p>
+    <em class="message"></em>
+    <script>
+      function showCoords(e) {
+        // e: event object
+        const msg = document.querySelector(".message");
+        msg.innerHTML =
+          "clientX value: " +
+          e.clientX +
+          "<br>" +
+          "clientY value: " +
+          e.clientY;
+      }
+      addEventListener("click", showCoords);
+    </script>
+  </body>
+</html>

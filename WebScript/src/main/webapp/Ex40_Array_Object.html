@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //javascript 비교하자면 java에 collection동일
+
+      let array = ["포도", "사과"];
+      console.log(array.toString()); //재정의..
+      console.log(array + "-default toString() 생략"); //자바랑 비슷
+
+      for (let i = 0; i < array.length; i++) {
+        console.log(array[i]);
+      }
+
+      for (let index in array) {
+        // 인덱스를 가져옴
+        console.log(array[index]);
+      }
+
+      for (let value of array) {
+        // 값을 가져옴
+        console.log(value);
+      }
+
+      //["포도", "사과"]
+      //동적은 위험할 수 있다 // 이렇게 유연하다~
+      array[2] = "바나나"; //방이 두갠대 만들어진다.
+      console.log(array.toString() + "/" + array.length);
+
+      // ['포도','사과','바나나'] 현재 들어가 있음
+      // 권장하지 않아요 array[2] >> 권장 push
+      array[10] = "애플망고"; // bad한 코드
+      console.log(array.toString() + "/" + array.length);
+
+      console.log(array[9] + ">> array[9]"); // 값이 들어올 때 타입이 정해진다.
+      array[9] = "배";
+
+      let array2 = ["one", "two", "three"];
+      array2.length = 2; // 권장하지 않아요
+      console.log(array2 + "---" + array2.length);
+      array2.length = 10; // 줄이는 것도, 늘리는것도 가능(가능하면 쓰지 마세요)
+
+      //권장 방법
+      //Array >> stack >> LIFO >> push >> pop 권장 (good)
+
+      let array3 = [];
+      array3.push("aa");
+      array3.push("bb");
+      array3.push("cc");
+      array3.push("dd");
+
+      console.log(array3.pop()); //dd
+      console.log(array3.pop()); //cc
+      console.log(array3.pop()); //bb
+      console.log(array3.pop()); //aa
+
+      console.log(array3.pop()); //undefiined
+    </script>
+  </body>
+</html>
