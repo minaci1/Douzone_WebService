@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let myobj = { name: "john", age: 30, city: "seoul" };
+      console.log(myobj);
+      //[객체 데이터] -->[문자열 데이터]
+      //login.jsp?name=john&age=30&city=seoul
+      let stringobj = JSON.stringify(myobj); //외우기 point
+      console.log(stringobj); //'{"name":"john","age":30,"city":"seoul"}' 문자이다.
+      console.log(typeof stringobj);
+
+      //[문자열 데이터] -->[객체 데이터] 단, 구조가 json형태 :조건 "속성값"
+      //let stringstr = '{name:"john","age":30,"city":"seoul"}'; // 얘는 문자열이다. json 아님 앞에 쌍콤마 뺌 // 주의사항 변환할때 무조건 "" 해줘야함!!!!!!!!!!!!
+      //반드시 속성에 더블 쿼테이션 넣어야 함
+      let stringstr = '{"name":"john","age":30,"city":"seoul"}';
+      console.log(stringstr);
+      console.log(typeof stringstr);
+
+      let myjson = JSON.parse(stringstr);
+      console.log(myjson);
+
+      console.log(myjson.name);
+      console.log(myjson.name); //암기     객체.속성명
+      console.log(myjson["name"]); //암기 객체["속성명"]
+
+      /*
+          index.htm, index.html
+          css >> common.cs
+          javascript >> common.js
+          json >> common.json >> 형식(MIME)  마임타입 >> application/ json //데이터 표현 가능 (엑셀처럼)
+          xml >> common.xml
+          */
+
+      let mycars;
+      mycars = {
+        name: "jhon",
+        age: 30,
+        cars: [
+          { name: "Ford", model: ["Mustang", "Focus"] },
+          { name: "BMW", model: ["520", "x5", "x6"] },
+          { name: "Fiat", model: ["500", "panda"] },
+        ],
+      }; //여러대의 차를 가지고 있다.
+
+      //신입개발자
+      //json 데이터에서 원하는 값을 추출해서 화면에 이쁘게 출력
+      //차량이름 >> 모델명 출력
+      //Ford - Mustang Focus 출력
+      console.log(mycars);
+      console.log(mycars.cars);
+      for (let index in mycars.cars) {
+        document.write("차량이름 : " + mycars.cars[index].name);
+        console.log(mycars.cars[index].model);
+        for (let i in mycars.cars[index].model) {
+          document.write(" 차량모델 : " + mycars.cars[index].model[i]);
+        }
+        document.write("<hr>");
+      }
+    </script>
+  </body>
+</html>
