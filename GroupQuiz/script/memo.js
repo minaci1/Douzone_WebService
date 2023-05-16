@@ -38,7 +38,7 @@ if (datas != null) {
     console.log(lng);
 
     item += `
-    <div class="content-box">
+    <div class="content-box" draggable="true"> 
       <div class="name">
         <p class="place_name">${name}</p>
       </div>
@@ -53,20 +53,21 @@ if (datas != null) {
       </div>
     </div>`;
   }
-  let contents = document.getElementById("getpostit");
-  contents.innerHTML = item;
+  //let contents = document.getElementById("getpostit");
+
+  let contents = document.getElementsByClassName("dropzone")[0];
+  contents.innerHTML += item;
 }
 
 //드래그앤드롭 시작
 
 window.onload = function () {
-  var contentbox = document.querySelectorAll(".content-box"); //.card를 가진 elements 배열
+  var cards = document.querySelectorAll(".content-box"); //.card를 가진 elements 배열
   var dropzones = document.querySelectorAll(".dropzone"); //.dropzone을 가진 elements 배열
   // cards.forEach(function(card){})
   // 와 같은 함수를 Arrow Function으로..
 
   // https://yuddomack.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8
-
   // forEach문 -> JS Ex43_..
   // drag할 card들 event attach
   cards.forEach((card) => {
