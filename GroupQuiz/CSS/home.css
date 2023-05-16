@@ -1,0 +1,409 @@
+* {
+  box-sizing: border-box;
+}
+
+.bgcolor {
+  background-color: rgb(253, 235, 237);
+}
+body {
+  background-color: #fff;
+  position: relative;
+}
+
+.main-menu li a {
+  color: #383838;
+}
+.navigator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  padding: 8px 30px;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.main-logo img {
+  animation: gelatine 0.8s infinite;
+}
+
+@keyframes gelatine {
+  from,
+  to {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
+
+.main-menu {
+  display: flex;
+}
+
+.main-menu li {
+  font-family: "GmarketSansMedium";
+  font-size: 13pt;
+  margin: 0px 5px;
+  padding: 7px 10px;
+  position: relative;
+}
+
+.main-menu li:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #053768;
+  transition: all 0.5s;
+}
+
+a:hover {
+  color: #053768;
+}
+
+.main-menu li:hover:after {
+  left: 0;
+  width: 100%;
+}
+.main-menu li:hover {
+  color: #053768;
+  font-family: GmarketSansBold;
+  letter-spacing: -0.008em;
+  transition: 0.5s;
+}
+
+.all-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.content {
+  position: static;
+  width: 100%;
+  margin-top: 30px;
+  height: 900px;
+}
+
+.home {
+  margin-top: 140px;
+  position: relative;
+  z-index: 0;
+}
+
+.home h1 {
+  font-family: GmarketSansBold;
+  text-align: center;
+  left: 0;
+  right: 0;
+  font-size: 49pt;
+  line-height: 1.15em;
+  letter-spacing: -0.05em;
+  color: #fff;
+}
+
+#dynamic {
+  position: relative;
+  color: #383838;
+  font-size: 15pt;
+}
+
+.cursor {
+  animation: blink 0.5s infinite;
+  font-family: GmarketSansLight;
+  font-size: 4.5rem;
+}
+
+.face {
+  display: block;
+  position: absolute;
+  width: 360px;
+  left: 0;
+  right: 0;
+  top: 160px;
+  margin: 0 auto;
+}
+
+.go {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 130px;
+  font-family: GmarketSansBold;
+  text-align: center;
+  margin: 0 auto;
+  top: 550px;
+}
+
+.about {
+  margin: 200px 200px;
+}
+
+.about h2 {
+  font-family: GmarketSansBold;
+  font-size: 30pt;
+  color: black;
+  align-items: center;
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 100px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 70px;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 25px 50px 40px;
+  margin-left: 10px;
+  /* width: 300px;
+  height: 600px; */
+}
+
+.profile-content img {
+  width: 150px;
+  margin: auto;
+  background-color: #eaeaea;
+  border-radius: 100px;
+  margin-top: 50px;
+  margin-bottom: 5px;
+  /* 박스 쉐도우 만들기 */
+}
+
+.profile-content h3 {
+  font-family: GmarketSansMedium;
+  font-size: 20pt;
+  color: black;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-content h4 {
+  font-family: GmarketSansbold;
+  font-size: 20pt;
+  color: black;
+  text-align: center;
+  margin-top: 2.5px;
+  margin-bottom: 30px;
+}
+
+.profile-content p {
+  font-family: NotoSans;
+  font-weight: 400;
+  font-size: 15pt;
+  color: #053768;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+/* .profile-content p img {
+  width: 30px;
+  background-color: none;
+  align-items: center;
+  text-align: center;
+} */
+
+.profile-content p:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: #053768;
+  opacity: 0.4;
+  display: block;
+  margin-top: 15px;
+}
+
+.number {
+  opacity: 0.6;
+  font-weight: 300;
+}
+
+.profile-content2 {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 60px 40px;
+}
+
+.profile-content2 h3 {
+  font-family: GmarketSansBold;
+  font-size: 17pt;
+  color: #053768;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-content2 p {
+  font-family: NotoSans;
+  font-weight: 600;
+  font-size: 14pt;
+  color: #053768;
+  margin-top: 5px;
+}
+
+.goal img {
+  width: 250px;
+  height: 200px;
+  margin: 20px;
+}
+
+.goal h2 {
+  font-family: GmarketSansBold;
+  font-size: 30pt;
+  color: black;
+  align-items: center;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.goal-boxes1 {
+  position: relative;
+  width: 960px;
+  height: 400px;
+  margin: 100px auto 200px;
+  overflow: hidden;
+}
+
+.goal-boxes {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: left 0.5s ease-out;
+}
+
+.goal-boxes li:not(:last-child) {
+  margin-right: 30px;
+}
+.goal-box {
+  float: left;
+  border: 1px solid pink;
+  background-color: #eaeaea;
+  text-align: center;
+  align-items: center;
+  width: 300px;
+  height: 400px;
+}
+
+.goal-box h3 {
+  text-align: center;
+  font-family: GmarketSansBold;
+  color: #fff;
+  background-color: pink;
+  font-size: 20pt;
+  padding: 5px 10px;
+}
+
+.goal-box p {
+  font-family: "NotoSans";
+  font-size: 13pt;
+  font-weight: 500;
+  color: #053768;
+  margin-bottom: 30px;
+  line-height: 1.2em;
+}
+
+.controls {
+  font-size: 30px;
+  font-family: GmarketSansMedium;
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  bottom: 530px;
+  margin: 0 180px;
+}
+
+.controls span {
+  font-size: 25pt;
+  color: pink;
+  padding: 3px 17px 0px;
+}
+
+.contact {
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 200px;
+}
+
+.contact-logo img {
+  width: 200px;
+  margin: 30px 0px 30px;
+}
+
+.contact-content {
+  display: inline-block;
+}
+
+.contact-content img {
+  width: 45px;
+  margin: 30px 15px 30px;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .navigator {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar-menu {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+#back-to-top {
+  font-family: "GmarketSansMedium";
+  font-size: 1em;
+  position: fixed;
+  bottom: 11.7em;
+  right: 2.5em;
+  background-color: #eaeaea;
+  box-shadow: 0 0 0.4em 0 rgba(0, 0, 0, 0.25);
+  color: #383838;
+  border-radius: 5px;
+  padding: 0.8em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-block;
+  opacity: 0;
+}
+
+#back-to-top:hover {
+  font-family: "GmarketSansbold";
+  background-color: #fff;
+  color: pink;
+  padding: 0.8em 2.5em;
+}
+
+#back-to-top.visible {
+  opacity: 1;
+}
