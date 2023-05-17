@@ -208,11 +208,11 @@
       //POINT : 객체가 객체를 가질 수 있다 , 객체가 배열을 가질 수 있다
       //JAVA : class Memeber {Car car;  List<Person> list;}
       let Grade = {
-        list: { hong: 10, kim: 20, park: 30 },
+        mina: { hong: 10, kim: 20, park: 30 },
         show: function () {
-          for (let key in this.list) {
+          for (let key in this.mina) {
             //객체 key(속성값)
-            document.write(key + ":" + this.list[key] + "<br>");
+            document.write(key + ":" + this.mina[key] + "<br>");
           }
         },
       };
@@ -220,7 +220,7 @@
       Grade.show();
       document.write("<hr>");
 
-      let listobj = Grade.list; //객체.속성명을 했더니 return
+      let listobj = Grade.mina; //객체.속성명을 했더니 return
       document.write(listobj.kim);
       document.write("<br>");
       for (let key in listobj) {
