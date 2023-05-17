@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <!--  
+ 규칙 : 기본급여  : (정수값)
+      기타수당  : 국가유공자 + 5년이상 근속
+      총액      : (기본급 + 자격증 수당 + 자녀 수당 + 기타 수당)
+      세금      : 기본급 * 0.22 
+      실수령액  : 총액 - 세금
+      연봉      : 총액 * 12 + 기본급
+      천단위 콤마 처리 : 자율 (표현식 , 로직)
+     10,000,000원 
+ -->
+  </head>
+  <body>
+    <h2>급여 관리 시스템 지원 양식</h2>
+    <form name="payManage">
+      <table>
+        <tr>
+          <td>성명:</td>
+          <td><input type="text" name="name" size="20" /></td>
+        </tr>
+        <tr>
+          <td>기본급:</td>
+          <td><input type="text" name="basicPay" size="20" /></td>
+        </tr>
+        <tr>
+          <td>자격증 수당:</td>
+          <td>
+            <input type="radio" name="license" value="150000" />기사 150,000원
+            <input type="radio" name="license" value="100000" />산업기사
+            100,000원 <input type="radio" name="license" value="50000" />기능사
+            50,000원
+          </td>
+        </tr>
+        <tr>
+          <td>자녀 수당:</td>
+          <td>
+            <input type="radio" name="child" value="100000" />1인 100,000원
+            <input type="radio" name="child" value="200000" />2인 200,000원
+            <input type="radio" name="child" value="300000" />3인 300,000원
+          </td>
+        </tr>
+        <tr>
+          <td>기타 수당:</td>
+          <td>
+            <input type="checkbox" name="merit" value="100000" />국가유공자
+            100,000원
+            <input type="checkbox" name="longterm" value="100000" />5년이상 근속
+            100,000원
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input
+              type="button"
+              name="btn"
+              value="계산하기"
+              onclick="resultSal(this.form)"
+              style="margin-left: 30px"
+            />
+          </td>
+        </tr>
+      </table>
+    </form>
+    <p></p>
+    <p></p>
+    <form name="resultForm">
+      <table align="left" style="margin-left: 0px">
+        <tr>
+          <th colspan="2">출력 결과</th>
+        </tr>
+        <tr>
+          <td width="100px">성명:</td>
+          <td><input type="text" name="resultName" /></td>
+        </tr>
+
+        <tr>
+          <td>기본급:</td>
+          <td><input type="text" name="resultBasicPay" /></td>
+        </tr>
+
+        <tr>
+          <td>자격증 수당:</td>
+          <td><input type="text" name="resultLicense" /></td>
+        </tr>
+
+        <tr>
+          <td>자녀 수당:</td>
+          <td><input type="text" name="resultChild" /></td>
+        </tr>
+
+        <tr>
+          <td>기타 수당:</td>
+          <td><input type="text" name="resultEtc" /></td>
+        </tr>
+
+        <tr>
+          <td>총액:</td>
+          <td><input type="text" name="resultTotalPay" /></td>
+        </tr>
+
+        <tr>
+          <td>세금:</td>
+          <td><input type="text" name="resultTax" /></td>
+        </tr>
+
+        <tr>
+          <td>실수령액:</td>
+          <td><input type="text" name="resultPay" /></td>
+        </tr>
+
+        <tr>
+          <td>연봉:</td>
+          <td><input type="text" name="resultYearlyPay" /></td>
+        </tr>
+      </table>
+    </form>
+    <script>
+      function resultSal() {
+        let name = document.querySelector("input[name='name']").value;
+
+        let basicPay = 0;
+        if (document.querySelector("input[name='basicPay']")) {
+          basicPay = parseInt(
+            document.querySelector("input[name='basicPay']").value
+          );
+        }
+
+        let license = 0;
+        if (document.querySelector("input[name='license']")) {
+          license = parseInt(
+            document.querySelector("input[name='license']").value
+          );
+        }
+
+        let child = 0;
+        if (document.querySelector("input[name='child']:checked")) {
+          child = parseInt(document.querySelector("input[name='child']").value);
+        }
+
+        let merit = 0;
+        if (document.querySelector("input[name='merit']:checked")) {
+          merit = parseInt(document.querySelector("input[name='merit']").value);
+        }
+
+        let longterm = 0;
+        if (document.querySelector("input[name='longterm']:checked")) {
+          longterm = parseInt(
+            document.querySelector("input[name='longterm']").value
+          );
+        }
+
+        console.log("name" + name);
+        console.log("basicPay" + basicPay);
+        console.log("license" + license);
+        console.log("child" + child);
+        console.log("merit" + merit);
+        console.log("longterm" + longterm);
+
+        let etcpay = merit + longterm;
+        let paytotal = basicPay + license + child + merit + longterm;
+        let taxpay = basicPay * 0.22;
+        let realpay = paytotal - taxpay;
+        let yearpay = realpay * 12 + basicPay;
+
+        console.log("etcpay" + etcpay);
+        console.log("paytotal" + paytotal);
+        console.log("taxpay" + taxpay);
+        console.log("realpay" + realpay);
+        console.log("yearpay" + yearpay);
+
+        document.querySelector("input[name='resultName']").value = name;
+        document.querySelector("input[name='resultBasicPay']").value =
+          basicPay.toLocaleString();
+        document.querySelector("input[name='resultLicense']").value =
+          paycal(license);
+        document.querySelector("input[name='resultChild']").value =
+          paycal(child);
+        document.querySelector("input[name='resultEtc']").value =
+          paycal(etcpay);
+        document.querySelector("input[name='resultTotalPay']").value =
+          paycal(paytotal);
+        document.querySelector("input[name='resultTax']").value =
+          paycal(taxpay);
+        document.querySelector("input[name='resultPay']").value =
+          paycal(realpay);
+        document.querySelector("input[name='resultYearlyPay']").value =
+          paycal(yearpay);
+      }
+
+      function paycal(money) {
+        return Math.round(money)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+    </script>
+  </body>
+</html>
