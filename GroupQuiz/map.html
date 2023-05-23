@@ -12,7 +12,7 @@
     <div class="wrapper">
       <div class="header">
         <ul class="navi-bar">
-          <li><a href="home.html">HOME</a></li>
+          <!-- <li><a href="home.html">HOME</a></li> -->
           <li><a href="map.html">MAP</a></li>
           <li><a href="memo.html">MEMO</a></li>
         </ul>
@@ -140,22 +140,34 @@
             kakao.maps.event //클릭하고 맛집 저장하기
               .addListener(marker, "click", function () {
                 let data = {
+                  id: "",
                   name: place.place_name,
                   addr: place.address_name,
-
+                  color: "",
                   lat: place.y,
                   lng: place.x,
                 };
                 //있는지 없는지 창이 노출됨
-                if (confirm(data.name + " 추가할래?")) {
-                  if (localStorage.length == 0) {
-                    let arr = [];
-                    arr.push(data); //배열을 넣어주고
-                    localStorage.setItem("places", JSON.stringify(arr)); // 스토리지에 올린다.
-                  } else {
-                    let datas = JSON.parse(localStorage.getItem("places")); //로컬스토리지에 읽어들인 값이 object형이기 때문에 JSON형태로 파싱해줘야한다.
-                    datas.push(data); //JSON형태로된 datas 배열에 data를 추가해준다.
-                    localStorage.setItem("places", JSON.stringify(datas)); //배열을 로컬스토리지에 올린다.
+                if (confirm(data.name + " 저장 하시겠습니까?")) {
+                  const color = prompt(
+                    "포스트잇 색상을 지정해주세요(gray,green,blue,yellow) 중 선택"
+                  );
+                  if (color != null) {
+                    data.color = color;
+
+                    if (localStorage.length == 0) {
+                      data.id = 0;
+                      let arr = [];
+                      arr.push(data); //배열을 넣어주고
+                      localStorage.setItem("places", JSON.stringify(arr)); // 스토리지에 올린다.
+                    } else {
+                      data.id = JSON.parse(
+                        localStorage.getItem("places")
+                      ).length; //로컬스토리지 인덱스번호를 id에 할당
+                      let datas = JSON.parse(localStorage.getItem("places")); //로컬스토리지에 읽어들인 값이 object형이기 때문에 JSON형태로 파싱해줘야한다.
+                      datas.push(data); //JSON형태로된 datas 배열에 data를 추가해준다.
+                      localStorage.setItem("places", JSON.stringify(datas)); //배열을 로컬스토리지에 올린다.
+                    }
                   }
                 }
               });
