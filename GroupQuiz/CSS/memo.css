@@ -12,7 +12,24 @@
   height: 300px;
   padding: 30px 30px 30px 30px;
   border: 1px solid #bfbfbf;
-  background-color: #aae3e2;
+}
+.content-box.gray {
+  background-color: gray;
+  font-size: x-large;
+  font-weight: 700;
+  color: wheat;
+}
+.content-box.green {
+  background-color: green;
+  color: wheat;
+}
+.content-box.blue {
+  background-color: blue;
+  color: wheat;
+}
+.content-box.yellow {
+  background-color: yellow;
+  color: slateblue;
 }
 
 html {
