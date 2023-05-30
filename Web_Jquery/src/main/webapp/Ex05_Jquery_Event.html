@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+      $(function () {
+        /*
+        jquery 이벤트(on, off 이벤트 동적추가, 제거) >> parameter 로 json 객체 받아요 
+        2.x.x > bind(), unbind()
+        3.x.x > on(), off()
+        */
+        //$('p').on(function(){})
+        //$('p').on(function(){})
+        //$('p').on(function(){})
+
+        $("p").on({
+          mouseleave: function () {
+            $(this).css("background-color", "red");
+          },
+          click: function () {
+            $(this).css("background-color", "green");
+          },
+          mouseenter: function () {
+            $(this).css("background-color", "blue");
+          },
+        });
+
+        $("button").click(function () {
+          $("p").off("click"); //제거
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p>on 함수를 사용해서 다중 이벤트 처리하기</p>
+    <hr />
+    <button>이벤트 제거</button>
+  </body>
+</html>
