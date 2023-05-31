@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script>
-      //window.cnload=function(){
-      //  document.getElementById("btn").onclick=function(){
+        <title>Document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script>
+            //window.cnload=function(){
+            //  document.getElementById("btn").onclick=function(){
 
-      //    }
-      //}
+            //    }
+            //}
 
-      $(document).ready(function () {
-        //window.onload 비슷한데, dom트리 생성되면,,,,실행
-        $("#btn").click(function () {
-          console.log($(this));
-          $(this).hide();
-        });
-      });
-    </script>
-  </head>
-  <body>
-    <input type="button" id="btn" value="버튼" />
-  </body>
+            $(document).ready(function () {
+                //window.onload 비슷한데, dom트리 생성되면,,,,실행
+                $('#btn').click(function () {
+                    $(this).hide();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <input type="button" id="btn" value="버튼" />
+    </body>
 </html>
