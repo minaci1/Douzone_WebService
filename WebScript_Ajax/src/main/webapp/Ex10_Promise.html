@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		//$.ajax('url', function(response){})
+		//$.ajax('url', (response)=>{})
+		
+		//비동기 함수 처리
+		/*
+		function delay(sec,callback){  // callback parameter  함수의 주소를 받는다 
+			setTimeout(()=>{
+			 callback(new Date());	
+			}, sec * 1000)
+		}
+		
+		console.log('delay start',new Date());
+		//function call(result){console.log(result)}
+		//delay(1,call);
+		delay(1,(result) => {console.log(result)});
+		
+		console.log('delay end');
+		
+		결과 : 비동기 함수 ...순서가 보장 되지 않아요 ^^
+		*/
+		
+		/*
+		//3개의 함수를 만들어서 일정한 1초 또는 2초 간격으로 출력되기를 원해요
+		function delay(sec,callback){  // callback parameter  함수의 주소를 받는다 
+			setTimeout(()=>{
+			 callback(new Date());	
+			}, sec * 1000)
+		}
+		
+		delay(2,(result) => {console.log(1, result)}); //2초
+		delay(2,(result) => {console.log(2, result)}); //4초
+		delay(2,(result) => {console.log(3, result)}); //6초
+		
+		//준비 땅 3개 함수 거의 동시  2초 뒤 거의 동시 실행
+		*/
+		
+		//3개의 비동기 함수가 순차적으로 실행 되기를 원해요
+		//함수(함수(함수()))
+		//callback 패턴 (콜백안에 콜백)
+		/*
+		function delay(sec,callback){  // callback parameter  함수의 주소를 받는다 
+			setTimeout(()=>{
+			 callback(new Date());	
+			}, sec * 1000)
+		}
+		
+		delay(2,(result) => {console.log(1, result)
+			
+			delay(2,(result) => {console.log(2, result)
+				
+				delay(2,(result) => {console.log(3, result)
+				}); 
+			});
+		});
+		*/
+		//비동기인데 순서 보장함 
+		//callback 의 지옥에서 탈출하자
+		//비동기를 순차적으로 실행하자
+		//필요 > promise > 
+		
+		
+		/*
+		function delayPromise(sec){
+			//return new Promise(function(resolve, reject) { //정상 > resolve, 비정상(예외상황) > reject 
+			//});
+			return new Promise((resolve,reject) => {
+				setTimeout(()=>{
+					resolve(new Date());
+				},sec*1000);
+			});
+		}
+		
+		delayPromise(1).then((result)=>{console.log(1,result)}); //thens 은 성공하면 console나옴
+		*/
+		
+		//당신이 Promise를 사용한다 하더라도 callback에 callback하는 것처럼 사용한다면
+		//다를 것이 없다
+		/*
+		function delayPromise(sec){
+			//return new Promise(function(resolve, reject) { //정상 > resolve, 비정상(예외상황) > reject 
+			//});
+			return new Promise((resolve,reject) => {
+				setTimeout(()=>{
+					resolve(new Date());
+				},sec*1000);
+			});
+		}
+		//문제는 없지만 Promise를 제대로 사용하고 있는 것은 아니다. (유지보수 어렵)
+		delayPromise(1).then((result)=>{console.log(1,result);
+			delayPromise(1).then((result)=>{console.log(1,result);});	
+		}); //thens 은 성공하면 console나옴
+		*/
+		
+		//Promise 제대로 사용하기...
+		function delayPromise(sec){
+			return new Promise((resolve,reject) => {
+				setTimeout(()=>{
+					resolve(new Date());
+				},sec*1000);
+			});
+		}
+		
+		/*
+		good
+		//fecth 원리, promise 객체 리턴 
+		delayPromise(1).then((result)=>{
+			console.log(1,result)
+			return delayPromise(1); //결국 promise 객체 리턴(then)
+			}).then((result)=>{
+				console.log(2,result);
+				return delayPromise(1)
+			}).then((result)=>{
+				console.log(3,result);
+			});
+		*/
+		
+		//간단하게 test
+		
+		delayPromise(1).then((result)=>{
+			console.log(1,result)
+			return delayPromise(1); //결국 promise 객체 리턴(then)
+			}).then((result)=>{
+				console.log(2,result);
+				return delayPromise(1)
+			}).then((result)=>{
+				console.log(3,result);
+				return "kosa" //promise 객체 리턴하는게 아니니까 3번째 promise 객체와 같이 뽑힘(지연없이)
+			}).then((result)=>{
+				console.log(result);
+			});
+		//https://www.w3schools.com/js/js_promise.asp 참고 
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>
