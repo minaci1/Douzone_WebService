@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+	<script>
+	/*
+	http://api.flickr.com/services/feeds/photos_public.gne?tags=raccoon&tagmode=any&format=json&jsoncallback=?
+			
+			
+	getJSON 데이터 비동기 처리하기
+	http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?
+			
+		
+	JSON 객체 가공 (parameter)
+	tags=raccoon&tagmode=any&format=json&
+	
+	input type="text">> 싸이
+	const data ={tags:  , tagmode:any, format: json}
+	
+	데이터 받아서 처리하는 ex) 라쿤 >> 이미지 경로 추출
+	이미지 태그를 동적으로 생성하고 그 src = 이미지 경로 추출을 넣어서 화면에 출력 
+		
+	*/
+	
+	
+	
+	$(function(){
+		$('#btn').click(function(){
+			const data ={tags: $('#data').val(), tagmode:"any", format: "json"};
+			url = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+			
+			$.getJSON(url,data,function(responsetext){ //입력받은 정보를 url에 
+				console.log(responsetext);
+				let items =[];
+				$.each(responsetext.items,function(index,element){
+					//console.log(element.media.m);
+					items.push("<img src='" +element.media.m+"'/>" )
+					// <img src ="path"/>
+				})
+				$('#images').html(items);
+				
+		})
+	})
+	})
+	</script>
+</head>
+<body>
+	 <input type="text" id="data" />
+	 <input type="button" id='btn' value ="JSON DATA 가져오기">
+	 <div id ="images"></div>
+</body>
+</html>
