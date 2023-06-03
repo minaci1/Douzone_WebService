@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+	<script>
+		/*
+		Category: Shorthand Methods 이미 데이터 타입이 셋팅되어있다.
+		jQuery.getJSON( url [, data ] [, success ] )Returns: jqXHR
+		Description: Load JSON-encoded data from the server using a GET HTTP request.
+		*/
+		//getJSOM >>dataType : "json" 데이터 타입이 셋팅되어있다. 
+		 
+		$(function(){
+			//<div class ="btnload">JSON DATA LOAD</div> 클릭하면 
+			$('.btnload').click(function(){
+				
+				//const data = {"name":$('#name').val() ,"Name":$('#Name').val()} //게터
+				$.getJSON("Ex04_json.json" , function(responsetext){ //data가 server에 들어가고 그에 대한 응답이 정상이라면 자동 호출  callback
+					console.log(responsetext);
+					const JsonRes = responsetext;
+					
+					let arr = "";
+					 $.each(JsonRes, function (index, element) {
+		                    //console.log(
+		                      //  'num: ' + element.num + ' Name : ' + element.Name
+		                   // );
+						arr += 'num: ' + element.num + ' Name : ' + element.Name +'<br>';
+		                });
+					$('#display').html(arr);
+				});
+			}); 
+		 });
+	</script>
+	</head>
+<body>
+	<div id = "btn">
+		<div class ="btnload">JSON DATA LOAD</div>
+	</div>
+	<div id="display"></div>
+</body>
+</html>
