@@ -12,7 +12,7 @@
                 console.log($('#txtname').val());
 
                 //1. radio 기본 값 설정하기 (checked) 속성  >> name="gender" 같다 >> 같은 놈이 1개 이상 >> Array
-                $('input:radio').val(['F']); //radio 2개  ... 여러개의 요소중에 1개 (배열에서 한놈)
+                $('input:radio').val(['M']); //radio 2개  ... 여러개의 요소중에 1개 (배열에서 한놈)
                 //checked 하겠다
 
                 //여러개의 radio 있어요 >> id 난 name으로
@@ -50,8 +50,8 @@
         Textbox : <input type="text" id="txtname" />
         <br />
         RadioButton : Checked 속성
-        <input type="radio" name="gender" value="M" />남
         <input type="radio" name="gender" value="F" />여
+        <input type="radio" name="gender" value="M" />남
         <br />
         Dropdownlist(select 태그)
         <select id="isF">
