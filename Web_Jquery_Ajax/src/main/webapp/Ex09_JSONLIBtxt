@@ -1,0 +1,31 @@
+Lib 사용하기 위해서 아래 jar 파일 찿아서 다운로드 ...
+Json-lib requires (at least) the following dependencies in your classpath:
+jakarta commons-lang 2.5
+jakarta commons-beanutils 1.8.0
+jakarta commons-collections 3.2.1
+jakarta commons-logging 1.1.1
+ezmorph 1.0.6
+
+​
+
+​
+
+1. 객체 한 건일 경우
+JSONObject jsonobject= JSONObject.fromObject(member);
+DTO > {id:kglim, name:"홍길동"}
+
+​
+
+2. 객체 배열일 경우
+JSONArray jsonmember = JSONArray.fromObject(memberlist);
+List<member> memberlist = new ArrayList<>()
+
+[
+
+{id:kglim, name:"홍길동"},
+{id:kglim, name:"홍길동"},
+{id:kglim, name:"홍길동"}
+
+]
+
+​
