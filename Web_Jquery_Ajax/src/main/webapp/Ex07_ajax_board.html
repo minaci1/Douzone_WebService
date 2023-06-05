@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.wrap-loading {
+	/*로딩 이미지*/
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -21px;
+	margin-top: -21px;
+}
+
+.display-none { /*감추기*/
+	display: none;
+}
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+		$(function(){//json로 파라미터 주는게 젤 좋다.
+			$.ajax(
+					{
+				url:"Ex07_board.json",
+				type:"post",//xmlHttpRequest >> httpReq.open("POST","URL")
+				dataType:"json",//서버가 클라이언트에게 응답 데이터 형식 (Text: json,html,text,script)<>(xml)
+				success:(function(data){ //readySate =4 그리고 state 200~299
+					//console.log(data); // 항상 찍어서 확인
+					$.each(data,function(index,obj){
+						$('#treedata').append(obj.id +"/"+obj.name+"/"+obj.title+"/"+obj.content+"<br>");
+					})
+				}),
+				error:function(xhr){ //function(xmlHttpRequest xhr) : 500,404,304
+					console.log(xhr.status);
+				},
+				beforeSend:function(){ //readyState  = 3(서버에서 데이터 오는 도중)..다른 것은 작업 못하게 막는다 젤 먼저 
+					//이미지를 보여주다가
+					console.log("img load ...");
+				$('.wrap-loading').removeClass('display-none'); // 안보이기를 제거하니까 화면에 출력됨 
+			   },
+			   complete:function(){ //readySate =4
+				   //데이터 도착하면 이미지 제거
+				   console.log("img end display none")
+				   $('.wrap-loading').addClass('display-none'); //이미지 안보여주기 추가  
+			   }
+			 }
+			);
+		});
+	</script>
+</head>
+<body>
+	<!--  https://loading.io/ -->
+	<div class="wrap-loading display-none">
+		<div>
+			<img
+				src="https://tistory2.daumcdn.net/tistory/1898109/skin/images/Spinner.gif" />
+		</div>
+	</div>
+	<div id="treedata" >
+	</div>
+</body>
+</html>
