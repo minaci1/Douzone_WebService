@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+
+	$(function(){
+		
+		
+		$('#login').click(function(){
+			
+			const data ={
+					user_id : $("#user_id").val(),
+					user_pwd: $("#user_pwd").val(),
+					
+			};
+			
+			
+			$.ajax({
+				url:"Ex08_loginok.jsp",
+				type:"post",
+				dataType:"html",
+				data: data, //넘겨줘야함 ...
+				success:(function(responseText){ 
+					//console.log(responseText);
+					if (responseText.indexOf('success')!=-1){
+						$("#form1").slideUp("slow");
+						$('#message').html("<p style='color:green;font-weight:bold'>로그인 성공</p>");
+					}else if(responseText.indexOf('fail')!=-1){
+						$('#message').html("<p style='color:red;font-weight:bold'>로그인 실패</p>");
+					}else{
+						$('#message').html('<p>관리자에게 문의</p>')
+					}
+					
+				}),
+				error:function(xhr){ //function(xmlHttpRequest xhr) : 500,404,304
+					console.log(xhr.status);
+				},
+				beforeSend:function(){ //readyState  = 3(서버에서 데이터 오는 도중)..다른 것은 작업 못하게 막는다 젤 먼저 
+					//이미지를 보여주다가
+					console.log("img load ...");
+				$('.wrap-loading').removeClass('display-none'); // 안보이기를 제거하니까 화면에 출력됨 
+			   },
+			   complete:function(){ //readySate =4
+				   //데이터 도착하면 이미지 제거
+				   console.log("img end display none")
+				   $('.wrap-loading').addClass('display-none'); //이미지 안보여주기 추가  
+			   }
+			});
+		
+	});
+	});
+</script>
+<!-- 
+$.ajax() 함수를 사용해서 id 값 pwd 값 비동기로 전송하고
+		그 결과에 따라서 : success , fail
+		$('#message').html('<p>로그인 성공</p>')
+		$('#message').html('<p>로그인 실패</p>')
+		Jquery effect 효과 적용 (슬라이드 효과)
+	
+		parameter  연습   >> {}
+		val() , text() , html() , attr() 연습
+		effect > slideUp() , slideDown() 연습
+		
+		숨겨진 함정 : 넘어오는 데이터는 반드시 console 로 출력해서 확인 또 확인 ...
+		if(result == 'success'){} ....
+ -->
+</head>
+<body>
+	<form id="form1" name="form1" action="" method="post">
+		<table>
+			<tr>
+				<td>아이디</td>
+				<td><input type='text' id='user_id' name='user_id' tabindex='1' /></td>
+				<td rowspan='2'><input type='button' id='login' tabindex='3'
+					value='로그인' style='height: 50px' /></td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td><input type='password' id='user_pwd' name='user_pwd'
+					tabindex='2' /></td>
+			</tr>
+		</table>
+	</form>
+	<div id="message"></div>
+</body>
+</html>
